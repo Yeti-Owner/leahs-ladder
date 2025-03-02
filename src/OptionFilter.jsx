@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './OptionFilter.css';
+import './css/OptionFilter.css';
 
 function shuffle(array) {
   const shuffled = [...array];

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getUniqueTags } from './optionsData';
-import './CategorySelector.css';
+import './css/CategorySelector.css';
 
 export default function CategorySelector({ onComplete }) {
   const uniqueTags = getUniqueTags();

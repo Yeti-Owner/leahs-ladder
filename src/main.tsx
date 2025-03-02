@@ -6,8 +6,7 @@ import CategorySelector from './CategorySelector';
 import OptionFilter from './OptionFilter';
 import TournamentBracket from './TournamentBracket';
 import { filterByCategories } from './optionsData';
-import './App.css';
-import './HomePage.css';
+import './css/App.css';
 
 function App() {
   const [selectedCategories, setSelectedCategories] = useState<string[] | null>(null);

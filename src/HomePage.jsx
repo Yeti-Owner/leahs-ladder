@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LeahImage from './assets/Leah.png';
-import './HomePage.css';
+import './css/HomePage.css';
 
 export default function HomePage() {
   const [showTitle, setShowTitle] = useState(false);

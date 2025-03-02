@@ -1,3 +1,4 @@
+/* OptionFilter.css */
 .filter-stage {
   padding: 1rem;
   max-width: 600px;
@@ -32,6 +33,16 @@
   flex-direction: column;
 }
 
+/* Add pointer-events: none to all child elements */
+.swipe-container * {
+  pointer-events: none;
+}
+
+/* Reset pointer events for the container itself */
+.swipe-container {
+  pointer-events: all;
+}
+
 .swipe-container.fade-out {
   transition: all 0.4s ease-out;
   opacity: 0 !important;
@@ -49,6 +60,9 @@
   height: 250px;
   object-fit: cover;
   border-radius: 15px 15px 0 0;
+  /* Prevent image drag */
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 .option-info {
@@ -113,26 +127,6 @@
   padding: 1.5rem;
   font-size: 1.1rem;
   color: #888;
-}
-
-.loading-state {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-}
-
-.error-screen {
-  text-align: center;
-  padding: 2rem;
-}
-
-.error-screen h2 {
-  color: #f44336;
-  margin-bottom: 1rem;
-}
-
-.error-screen p {
-  color: #555;
 }
 
 /* Mobile-friendly adjustments */
