@@ -1,0 +1,98 @@
+/* OptionFilter.css */
+.filter-stage {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .option-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+  }
+  
+  .option-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .option-info {
+    margin-bottom: 1.5rem;
+  }
+  
+  .option-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .option-info p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-buttons button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .yes-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .yes-button:hover {
+    background-color: #45a049;
+  }
+  
+  .no-button {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .no-button:hover {
+    background-color: #e53935;
+  }
+  
+  .progress {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 1rem;
+  }
+  
+  .loading-state {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 2rem;
+  }
+  
+  .error-screen {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .error-screen h2 {
+    color: #f44336;
+    margin-bottom: 1rem;
+  }
+  
+  .error-screen p {
+    color: #555;
+  }

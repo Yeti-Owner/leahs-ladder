@@ -45,7 +45,7 @@ export default function HomePage() {
       <div className={`fade-in ${showButton ? 'visible' : ''}`}>
         <button 
           className="start-button"
-          onClick={() => navigate('/app')}
+          onClick={() => navigate('/categories')}
         >
           Get Started
         </button>

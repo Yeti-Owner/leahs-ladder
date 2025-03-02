@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { optionsData } from './optionsData';
+import './OptionFilter.css'; // Ensure you have this CSS file for styling
 
 function shuffle(array) {
   const shuffled = [...array];
@@ -10,23 +10,36 @@ function shuffle(array) {
   return shuffled;
 }
 
-export default function OptionFilter({ onComplete }) {
+export default function OptionFilter({ options, onComplete }) {
   const [shuffledOptions, setShuffledOptions] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
+  // Initialize shuffled options when the component mounts or options change
   useEffect(() => {
-    if (optionsData.length > 0) {
-      setShuffledOptions(shuffle([...optionsData]));
+    if (options.length > 0) {
+      setShuffledOptions(shuffle([...options]));
     } else {
-      onComplete([]);
+      onComplete([]); // Immediately complete if no options are available
     }
-  }, []);
+  }, [options]);
 
+  // Handle empty options case
+  if (options.length === 0) {
+    return (
+      <div className="error-screen">
+        <h2>No options available for selection!</h2>
+        <p>Please go back and select different categories.</p>
+      </div>
+    );
+  }
+
+  // Loading state while initializing
   if (shuffledOptions === null) {
     return <div className="loading-state">Initializing options...</div>;
   }
 
+  // Completion state when all options are processed
   if (currentIndex >= shuffledOptions.length) {
     onComplete(selectedOptions);
     return null;
@@ -44,13 +57,19 @@ export default function OptionFilter({ onComplete }) {
           <p>{currentOption.description}</p>
         </div>
         <div className="filter-buttons">
-          <button onClick={() => {
-            setSelectedOptions(prev => [...prev, currentOption]);
-            setCurrentIndex(prev => prev + 1);
-          }} className="yes-button">
+          <button
+            onClick={() => {
+              setSelectedOptions(prev => [...prev, currentOption]);
+              setCurrentIndex(prev => prev + 1);
+            }}
+            className="yes-button"
+          >
             Yes
           </button>
-          <button onClick={() => setCurrentIndex(prev => prev + 1)} className="no-button">
+          <button
+            onClick={() => setCurrentIndex(prev => prev + 1)}
+            className="no-button"
+          >
             No
           </button>
         </div>
