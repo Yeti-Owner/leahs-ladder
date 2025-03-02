@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './css/TournamentBracket.css'; // Ensure you have this CSS file
+import './css/TournamentBracket.css';
 
 function shuffle(array) {
   const shuffled = [...array];
