@@ -1,98 +1,173 @@
-/* OptionFilter.css */
 .filter-stage {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.swipe-instruction {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.swipe-container {
+  width: 100%;
+  max-width: 400px;
+  height: 70vh;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.swipe-container.fade-out {
+  transition: all 0.4s ease-out;
+  opacity: 0 !important;
+  transform: translateX(100vw) rotate(30deg) scale(0.8) !important;
+}
+
+.option-card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.option-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.option-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.option-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.option-info p {
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.swipe-feedback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.swipe-indicator {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 25px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.swipe-indicator.yes {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px solid #4CAF50;
+}
+
+.swipe-indicator.no {
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+  border: 2px solid #f44336;
+}
+
+.swipe-indicator.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.progress {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  color: #888;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.error-screen {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-screen h2 {
+  color: #f44336;
+  margin-bottom: 1rem;
+}
+
+.error-screen p {
+  color: #555;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  .filter-stage {
+    padding: 0.5rem;
   }
-  
-  .option-card {
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 1.5rem;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1rem auto;
+
+  .swipe-container {
+    height: 60vh;
   }
-  
+
   .option-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    height: 200px;
   }
-  
-  .option-info {
-    margin-bottom: 1.5rem;
-  }
-  
-  .option-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .option-info p {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .filter-buttons button {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .yes-button {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .yes-button:hover {
-    background-color: #45a049;
-  }
-  
-  .no-button {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .no-button:hover {
-    background-color: #e53935;
-  }
-  
-  .progress {
-    font-size: 1rem;
-    color: #777;
-    margin-top: 1rem;
-  }
-  
-  .loading-state {
-    text-align: center;
+
+  .swipe-indicator {
     font-size: 1.2rem;
-    color: #555;
-    margin-top: 2rem;
+    padding: 8px 16px;
   }
-  
-  .error-screen {
-    text-align: center;
-    padding: 2rem;
+
+  .swipe-instruction {
+    font-size: 1rem;
+    margin: 1rem 0;
   }
-  
-  .error-screen h2 {
-    color: #f44336;
-    margin-bottom: 1rem;
+
+  .option-info {
+    padding: 1rem;
   }
-  
-  .error-screen p {
-    color: #555;
+
+  .option-info h3 {
+    font-size: 1.2rem;
   }
+
+  .option-info p {
+    font-size: 0.9rem;
+  }
+}
