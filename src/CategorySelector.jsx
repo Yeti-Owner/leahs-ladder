@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getUniqueTags } from './optionsData';
-import './CategorySelector.css'; // Import the CSS file
+import './CategorySelector.css';
 
 export default function CategorySelector({ onComplete }) {
   const uniqueTags = getUniqueTags();
@@ -22,7 +22,7 @@ export default function CategorySelector({ onComplete }) {
 
   return (
     <div className="category-stage">
-      <h2>Select Categories to Include</h2>
+      <h2>What are you in the mood for?</h2>
       <div className="category-grid">
         {uniqueTags.map(category => (
           <button

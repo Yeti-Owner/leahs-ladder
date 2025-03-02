@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './OptionFilter.css'; // Ensure you have this CSS file for styling
+import './OptionFilter.css';
 
 function shuffle(array) {
   const shuffled = [...array];
@@ -49,7 +49,7 @@ export default function OptionFilter({ options, onComplete }) {
 
   return (
     <div className="filter-stage">
-      <h2>Include this option in the tournament?</h2>
+      <h2>Include this?</h2>
       <div className="option-card">
         <img src={currentOption.image} alt={currentOption.title} />
         <div className="option-info">
