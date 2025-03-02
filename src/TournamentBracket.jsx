@@ -254,7 +254,7 @@ export default function TournamentBracket({ filteredOptions }) {
 
   return (
     <div className="battle-stage">
-      <h2>Choose the Winner</h2>
+      <h2>What Would You Prefer?</h2>
       <div className="battle-options">
         {currentPair.map((option) => (
           <button

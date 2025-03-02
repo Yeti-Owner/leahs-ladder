@@ -1,270 +1,150 @@
-/* Base styles */
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-  }
-  
-  .app-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Loading states */
-  .loading-state {
-    text-align: center;
-    padding: 40px;
-    color: #666;
-  }
-  
-  .spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #007bff;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Error screens */
-  .error-screen {
-    text-align: center;
-    padding: 40px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .error-screen h2 {
-    color: #dc3545;
-    margin-bottom: 20px;
-  }
-  
-  .error-screen button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: opacity 0.2s;
-  }
-  
-  .error-screen button:hover {
-    opacity: 0.9;
-  }
-  
-  /* Tournament stages */
-  .battle-stage {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .battle-options {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-  
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #FFCFDF; 
+  color: #333;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FEFDCA;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.err-msg {
+  text-align: center;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #FEFDCA;
+  border-radius: 8px;
+}
+
+.err-msg h2 {
+  color: #A5DEE5;
+  margin-bottom: 20px;
+}
+
+.err-btn {
+  background: #E0F9B5;
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.err-btn:hover {
+  background: #A5DEE5; 
+  color: white;
+}
+
+.battle-options {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.battle-option {
+  border: 2px solid #E0F9B5;
+  border-radius: 8px;
+  padding: 15px;
+  width: 300px;
+  background: #FEFDCA;
+  transition: all 0.2s ease;
+}
+
+.battle-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: #A5DEE5;
+}
+
+.battle-option img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Option Filter */
+.opt-card {
+  max-width: 500px;
+  margin: 20px auto;
+  border: 2px solid #E0F9B5;
+  border-radius: 8px;
+  padding: 20px;
+  background: #FEFDCA;
+  transition: all 0.2s ease;
+}
+
+.opt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: #A5DEE5;
+}
+
+.opt-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.filter-btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-yes {
+  background-color: #E0F9B5;
+  color: #333;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-no {
+  background-color: #A5DEE5;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-yes:hover {
+  background-color: #A5DEE5;
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-no:hover {
+  background-color: #E0F9B5;
+  color: #333;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
   .battle-option {
-    cursor: pointer;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    width: 300px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    background: white;
-  }
-  
-  .battle-option:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-color: #007bff;
-  }
-  
-  .battle-option img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 15px;
-  }
-  
-  .option-info {
-    text-align: left;
-  }
-  
-  .option-info h3 {
-    margin: 0 0 10px;
-    color: #007bff;
-  }
-  
-  .option-info p {
-    margin: 0;
-    color: #666;
-    font-size: 14px;
-  }
-  
-  /* Results screen */
-  .results {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .results h1 {
-    color: #28a745;
-    margin-bottom: 30px;
-  }
-  
-  .results h2 {
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .rankings {
-    margin-top: 20px;
-  }
-  
-  .ranking-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background: white;
-    transition: transform 0.2s;
-  }
-  
-  .ranking-item:hover {
-    transform: translateX(5px);
-  }
-  
-  .ranking-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
-  .rank {
-    font-size: 24px;
-    font-weight: bold;
-    min-width: 50px;
-    color: #007bff;
-  }
-  
-  .content {
-    flex-grow: 1;
-    text-align: left;
-  }
-  
-  .content h3 {
-    margin: 0 0 5px;
-    color: #333;
-  }
-  
-  .content p {
-    margin: 0;
-    color: #666;
-    font-size: 14px;
-  }
-  
-  /* Filter stage */
-  .filter-stage {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .option-card {
-    max-width: 500px;
-    margin: 20px auto;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background: white;
-    transition: transform 0.2s;
-  }
-  
-  .option-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .option-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 15px;
-  }
-  
-  .filter-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .yes-button, .no-button {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: transform 0.2s, opacity 0.2s;
-  }
-  
-  .yes-button {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .no-button {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .yes-button:hover, .no-button:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-  }
-  
-  .progress {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .battle-option {
       width: 100%;
-    }
+  }
   
-    .ranking-item {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .ranking-item img {
-      width: 100%;
-      height: auto;
-    }
-  
-    .option-card {
+  .opt-card {
       width: 90%;
-    }
   }
+}

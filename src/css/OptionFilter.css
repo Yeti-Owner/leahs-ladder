@@ -1,15 +1,47 @@
-/* OptionFilter.css */
-body {
-  margin: 0;
+body .app-container {
+  background-color: transparent;
+  box-shadow: none;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
+  max-width: none;
+  margin: 0;
 }
 
 .filter-stage {
-  padding: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error-screen {
+  text-align: center;
+  padding: 40px;
   max-width: 600px;
   margin: 0 auto;
-  height: 90vh; /* 90vh to leave 5% margin at top and bottom */
+  background-color: #FEFDCA;
+  border-radius: 8px;
+}
+
+.error-screen h2 {
+  color: #A5DEE5;
+  margin-bottom: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FFCFDF; 
+}
+
+.filter-stage {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,49 +50,49 @@ body {
   z-index: 1;
 }
 
-/* Full-width background container */
 .background-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff; /* White background */
-  z-index: -1; /* Place behind the card */
+  background-color: #FFCFDF; 
+  z-index: -1;
 }
 
 .swipe-instruction {
-  color: #666;
+  color: #333; 
   font-size: 1.1rem;
-  margin-bottom: 1rem; /* Reduced margin */
+  margin-bottom: 1rem;
   text-align: center;
   position: relative;
   z-index: 1;
+  background-color: #FEFDCA; 
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
 }
 
 .swipe-container {
   width: 100%;
   max-width: 400px;
-  height: 70vh; /* Adjusted to fit within 90vh container */
+  height: 70vh;
   position: relative;
   touch-action: none;
   user-select: none;
   transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  background: white;
+  background: #FFFFFF; 
+  border: 4px solid #A5DEE5;
   border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   z-index: 1;
 }
 
-/* Add pointer-events: none to all child elements */
 .swipe-container * {
   pointer-events: none;
 }
 
-/* Reset pointer events for the container itself */
 .swipe-container {
   pointer-events: all;
 }
@@ -75,32 +107,43 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
+  height: 100%;
+  background-color: #FFFFFF;
 }
 
 .option-card img {
   width: 100%;
-  height: 200px; /* Reduced height for better fit */
+  height: 70%;
   object-fit: cover;
-  border-radius: 15px 15px 0 0;
+  border-radius: 4px 4px 0 0;
   -webkit-user-drag: none;
   user-drag: none;
 }
 
 .option-info {
-  padding: 1rem; /* Reduced padding */
-  flex-grow: 1;
+  height: 30%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .option-info h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  font-weight: bold;
   color: #333;
 }
 
 .option-info p {
   color: #666;
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
+  font-size: 1rem;
+  max-width: 90%;
 }
 
 .swipe-feedback {
@@ -113,7 +156,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem; /* Reduced padding */
+  padding: 1rem;
 }
 
 .swipe-indicator {
@@ -124,51 +167,56 @@ body {
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .swipe-indicator.yes {
-  color: #4CAF50;
-  background: rgba(76, 175, 80, 0.1);
-  border: 2px solid #4CAF50;
+  color: #00FF00;
+  border: 2px solid #00FF00;
 }
 
 .swipe-indicator.no {
-  color: #f44336;
-  background: rgba(244, 67, 54, 0.1);
-  border: 2px solid #f44336;
+  color: #FF0000;
+  border: 2px solid #FF0000;
 }
 
 .swipe-indicator.active {
   opacity: 1;
   transform: scale(1);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .progress {
   text-align: center;
-  padding: 0.75rem 1.5rem; /* Reduced padding */
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  color: #888;
-  background: white;
+  color: #333;
+  background: #FEFDCA;
   border-radius: 50px;
-  border: 2px solid #4CAF50;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #A5DEE5;
   position: relative;
   z-index: 1;
-  margin-top: 0.5rem; /* Reduced margin */
+  margin-top: 0.5rem;
 }
 
-/* Mobile-friendly adjustments */
 @media (max-width: 768px) {
   .filter-stage {
-    height: 90vh; /* Maintain 5% margin on mobile */
+    height: 90vh;
   }
 
   .swipe-container {
-    height: 65vh; /* Adjusted for mobile */
+    height: 65vh;
+    border-width: 3px;
   }
 
   .option-card img {
-    height: 150px; /* Further reduced for mobile */
+    height: 70%;
+  }
+
+  .option-info {
+    height: 30%;
   }
 
   .swipe-indicator {
@@ -178,18 +226,15 @@ body {
 
   .swipe-instruction {
     font-size: 1rem;
-    margin: 0.5rem 0; /* Reduced margin */
-  }
-
-  .option-info {
-    padding: 0.75rem; /* Reduced padding */
+    margin: 0.5rem 0;
+    padding: 0.4rem 0.8rem;
   }
 
   .option-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 
   .option-info p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }

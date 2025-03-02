@@ -4,8 +4,10 @@ import './css/CategorySelector.css';
 
 export default function CategorySelector({ onComplete }) {
   const uniqueTags = getUniqueTags();
+  
+  // Initialize all categories as false (not selected)
   const [selectedCategories, setSelectedCategories] = useState(
-    Object.fromEntries(uniqueTags.map(tag => [tag, true]))
+    Object.fromEntries(uniqueTags.map(tag => [tag, false]))
   );
 
   const toggleCategory = (category) => {
@@ -39,7 +41,7 @@ export default function CategorySelector({ onComplete }) {
         className="proceed-button"
         disabled={!Object.values(selectedCategories).some(v => v)}
       >
-        Continue to Options Selection
+        Continue
       </button>
     </div>
   );
