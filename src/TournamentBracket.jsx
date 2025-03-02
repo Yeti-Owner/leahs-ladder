@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './css/TournamentBracket.css'; // Ensure you have this CSS file
 
 function shuffle(array) {
   const shuffled = [...array];
@@ -171,7 +172,7 @@ export default function TournamentBracket({ filteredOptions }) {
       <div className="results">
         <h1>🏆 Winner: {mainWinner.title}</h1>
         <h2>Final Rankings:</h2>
-        <div className="rankings">
+        <div className="rankings-container">
           <div className="ranking-item">
             <div className="rank">#1</div>
             <div className="content">
@@ -191,7 +192,7 @@ export default function TournamentBracket({ filteredOptions }) {
       <div className="results">
         <h1>🏆 Winner: {mainWinner.title}</h1>
         <h2>Final Rankings:</h2>
-        <div className="rankings">
+        <div className="rankings-container">
           {finalRankings.map((option, index) => (
             <div key={option.title} className="ranking-item">
               <div className="rank">#{index + 1}</div>

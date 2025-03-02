@@ -84,37 +84,40 @@ export default function OptionFilter({ options, onComplete }) {
   const opacity = 1 - Math.min(Math.abs(swipeX) / 400, 0.4);
 
   return (
-    <div className="filter-stage">
-      <h2 className="swipe-instruction">← Swipe left to remove -Swipe right to keep →</h2>
-      <div 
-        className={`swipe-container ${fadeOut ? 'fade-out' : ''}`}
-        style={{
-          transform: `translateX(${swipeX}px) rotate(${rotate}deg) scale(${1 - Math.abs(swipeX)/1000})`,
-          opacity: opacity,
-        }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleEnd}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleEnd}
-        onMouseLeave={handleEnd}
-      >
-        <div className="option-card">
-          <img src={currentOption.image} alt={currentOption.title} />
-          <div className="option-info">
-            <h3>{currentOption.title}</h3>
-            <p>{currentOption.description}</p>
+    <>
+      <div className="background-container"></div> {/* Full-width background */}
+      <div className="filter-stage">
+        <h2 className="swipe-instruction">← Swipe left to remove - Swipe right to keep →</h2>
+        <div 
+          className={`swipe-container ${fadeOut ? 'fade-out' : ''}`}
+          style={{
+            transform: `translateX(${swipeX}px) rotate(${rotate}deg) scale(${1 - Math.abs(swipeX)/1000})`,
+            opacity: opacity,
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleEnd}
+          onMouseLeave={handleEnd}
+        >
+          <div className="option-card">
+            <img src={currentOption.image} alt={currentOption.title} />
+            <div className="option-info">
+              <h3>{currentOption.title}</h3>
+              <p>{currentOption.description}</p>
+            </div>
+          </div>
+          <div className="swipe-feedback">
+            <div className={`swipe-indicator yes ${swipeX > 50 ? 'active' : ''}`}>KEEP</div>
+            <div className={`swipe-indicator no ${swipeX < -50 ? 'active' : ''}`}>REMOVE</div>
           </div>
         </div>
-        <div className="swipe-feedback">
-          <div className={`swipe-indicator yes ${swipeX > 50 ? 'active' : ''}`}>KEEP</div>
-          <div className={`swipe-indicator no ${swipeX < -50 ? 'active' : ''}`}>REMOVE</div>
+        <div className="progress">
+          {currentIndex + 1} / {shuffledOptions.length}
         </div>
       </div>
-      <div className="progress">
-        {currentIndex + 1} / {shuffledOptions.length}
-      </div>
-    </div>
+    </>
   );
 }
