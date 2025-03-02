@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { optionsData } from './optionsData';
 
 function shuffle(array) {
   const shuffled = [...array];
@@ -10,7 +9,7 @@ function shuffle(array) {
   return shuffled;
 }
 
-export default function TournamentBracket() {
+export default function TournamentBracket({ filteredOptions }) {
   const [options, setOptions] = useState([]);
   const [currentRoundPairs, setCurrentRoundPairs] = useState([]);
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
@@ -26,17 +25,35 @@ export default function TournamentBracket() {
     winner: null,
   });
 
+  // Initialize tournament with filtered options
+  useEffect(() => {
+    if (filteredOptions && filteredOptions.length > 0) {
+      const initialOptions = shuffle([...filteredOptions]);
+      setOptions(initialOptions);
+      
+      // Handle single-option case immediately
+      if (initialOptions.length === 1) {
+        setMainWinner(initialOptions[0]);
+        setMainLosers([]);
+      }
+    }
+  }, [filteredOptions]);
+
   // Main tournament logic
   useEffect(() => {
-    setOptions(shuffle([...optionsData]));
-  }, []);
+    if (options.length <= 1) return;
 
-  useEffect(() => {
-    if (options.length === 0) return;
     const pairs = [];
     for (let i = 0; i < options.length; i += 2) {
       pairs.push(options.slice(i, i + 2));
     }
+    
+    // Handle single remaining option
+    if (pairs.length === 1 && pairs[0].length === 1) {
+      setWinners([pairs[0][0]]);
+      return;
+    }
+
     setCurrentRoundPairs(pairs);
     setCurrentPairIndex(0);
     setWinners([]);
@@ -46,15 +63,17 @@ export default function TournamentBracket() {
     if (currentPairIndex >= currentRoundPairs.length && currentRoundPairs.length > 0) {
       if (winners.length === 1 && !mainWinner) {
         setMainWinner(winners[0]);
-        setSecondaryBracket(prev => ({
-          ...prev,
-          options: shuffle([...mainLosers]),
-        }));
+        if (mainLosers.length > 0) {
+          setSecondaryBracket(prev => ({
+            ...prev,
+            options: shuffle([...mainLosers]),
+          }));
+        }
       } else {
         setOptions(winners);
       }
     }
-  }, [currentPairIndex, currentRoundPairs.length, winners, mainWinner]);
+  }, [currentPairIndex, winners, mainWinner, mainLosers]);
 
   // Handle single-option pairs in main bracket
   useEffect(() => {
@@ -134,7 +153,10 @@ export default function TournamentBracket() {
   };
 
   const getFinalRankings = () => {
-    if (!mainWinner || !secondaryBracket.winner) return [];
+    if (!mainWinner) return [];
+    if (mainLosers.length === 0) return [mainWinner];
+    if (!secondaryBracket.winner) return [];
+    
     return [
       mainWinner,
       secondaryBracket.winner,
@@ -142,6 +164,26 @@ export default function TournamentBracket() {
       ...secondaryBracket.winners.slice(1).reverse()
     ].filter((v, i, a) => a.findIndex(t => t.title === v.title) === i);
   };
+
+  // Handle single-option case immediately
+  if (mainWinner && mainLosers.length === 0) {
+    return (
+      <div className="results">
+        <h1>🏆 Winner: {mainWinner.title}</h1>
+        <h2>Final Rankings:</h2>
+        <div className="rankings">
+          <div className="ranking-item">
+            <div className="rank">#1</div>
+            <div className="content">
+              <h3>{mainWinner.title}</h3>
+              <p>{mainWinner.description}</p>
+            </div>
+            <img src={mainWinner.image} alt={mainWinner.title} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (mainWinner && secondaryBracket.winner) {
     const finalRankings = getFinalRankings();
@@ -168,7 +210,7 @@ export default function TournamentBracket() {
   if (mainWinner) {
     if (secondaryBracket.pairs.length === 0 || 
         secondaryBracket.pairIndex >= secondaryBracket.pairs.length) {
-      return <div>Processing secondary bracket...</div>;
+      return <div>Processing final rankings...</div>;
     }
 
     const currentPair = secondaryBracket.pairs[secondaryBracket.pairIndex];
@@ -195,14 +237,18 @@ export default function TournamentBracket() {
     );
   }
 
+  if (options.length === 0) {
+    return <div className="loading-state">Initializing tournament...</div>;
+  }
+
   if (currentRoundPairs.length === 0 || currentPairIndex >= currentRoundPairs.length) {
-    return <div>Loading...</div>;
+    return <div className="loading-state">Processing next round...</div>;
   }
 
   const currentPair = currentRoundPairs[currentPairIndex];
 
   if (currentPair.length === 1) {
-    return <div>Processing next round...</div>;
+    return <div className="loading-state">Processing next round...</div>;
   }
 
   return (
