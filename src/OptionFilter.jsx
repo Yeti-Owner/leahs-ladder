@@ -19,6 +19,14 @@ export default function OptionFilter({ options, onComplete }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [startX, setStartX] = useState(0);
 
+  // Preload images
+  useEffect(() => {
+    if (shuffledOptions && currentIndex + 1 < shuffledOptions.length) {
+      const nextImage = new Image();
+      nextImage.src = shuffledOptions[currentIndex + 1].image;
+    }
+  }, [currentIndex, shuffledOptions]);
+
   useEffect(() => {
     if (options.length > 0) {
       setShuffledOptions(shuffle([...options]));
@@ -85,7 +93,7 @@ export default function OptionFilter({ options, onComplete }) {
 
   return (
     <>
-      <div className="background-container"></div> {/* Full-width background */}
+      <div className="background-container"></div>
       <div className="filter-stage">
         <h2 className="swipe-instruction">← Swipe left to remove - Swipe right to keep →</h2>
         <div 
@@ -103,7 +111,12 @@ export default function OptionFilter({ options, onComplete }) {
           onMouseLeave={handleEnd}
         >
           <div className="option-card">
-            <img src={currentOption.image} alt={currentOption.title} />
+            <img 
+              src={currentOption.image} 
+              alt={currentOption.title} 
+              decoding="async"
+              fetchPriority="high"
+            />
             <div className="option-info">
               <h3>{currentOption.title}</h3>
               <p>{currentOption.description}</p>
