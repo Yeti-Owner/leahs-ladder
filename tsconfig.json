@@ -1,7 +1,19 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "extends": "@tsconfig/vite-react/tsconfig.json", // Extend Vite's React TS config
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"] // Optional: Add path aliases for easier imports
+    },
+    "typeRoots": ["./node_modules/@types", "./src/types"], // Include custom types
+    "allowJs": true, // Allow JavaScript files
+    "esModuleInterop": true, // Enable ES module interop
+    "skipLibCheck": true, // Skip library checks for faster compilation
+    "strict": true // Enable strict type checking
+  },
+  "include": [
+    "src/**/*", // Include all files in the src directory
+    "src/declarations.d.ts" // Explicitly include your declarations file
+  ],
+  "exclude": ["node_modules", "dist"] // Exclude node_modules and build output
 }
