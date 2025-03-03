@@ -1,6 +1,6 @@
 import { SetStateAction, StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from './HomePage';
 import CategorySelector from './CategorySelector';
 import OptionFilter from './OptionFilter';
