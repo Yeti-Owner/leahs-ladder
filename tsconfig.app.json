@@ -20,7 +20,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Custom type declarations */
+    "typeRoots": ["./node_modules/@types", "./src"], // Add this line
+    "allowJs": true // Add this line to allow JavaScript files
   },
-  "include": ["src"]
+  "include": ["src", "src/declarations.d.ts"] // Update this line
 }
