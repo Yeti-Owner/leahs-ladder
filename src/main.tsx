@@ -1,4 +1,4 @@
-import { SetStateAction, StrictMode, useState } from 'react';
+import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from './HomePage';
@@ -9,7 +9,7 @@ import { filterByCategories } from './optionsData';
 import './css/App.css';
 
 function App() {
-  const [, setSelectedCategories] = useState<string[] | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[] | null>(null);
   const [filteredOptions, setFilteredOptions] = useState<any[] | null>(null);
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/categories" element={
-        <CategorySelector onComplete={(categories: SetStateAction<string[] | null>) => {
+        <CategorySelector onComplete={(categories) => {
           const filtered = filterByCategories(categories);
           setSelectedCategories(categories);
           setFilteredOptions(filtered);
@@ -29,7 +29,7 @@ function App() {
           {filteredOptions && filteredOptions.length > 0 ? (
             <OptionFilter
               options={filteredOptions}
-              onComplete={(selected: SetStateAction<any[] | null>) => {
+              onComplete={(selected) => {
                 setFilteredOptions(selected);
                 navigate('/tournament');
               }}
