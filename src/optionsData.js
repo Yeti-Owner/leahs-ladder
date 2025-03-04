@@ -12,7 +12,7 @@ import silentvoice from './assets/SilentVoice.png';
 import barbiedreamhouse from './assets/BarbieDreamhouse.png';
 import lemis from './assets/LesMiserables.png';
 import wendylucy from './assets/WendyLucy.png';
-import deathcure from './assets/DeathCure.png';
+import illusionist from './assets/TheIllusionist.png';
 import hauntinghour from './assets/HauntingHour.png';
 
 export const optionsData = [
@@ -101,9 +101,9 @@ export const optionsData = [
     tags: ["movies"]
   },
   {
-    title: "Maze Runner Death Cure",
-    description: "The final movie to watch for the trilogy.",
-    image: deathcure,
+    title: "The Illusionist (2010)",
+    description: "VERY VERY SAD MOVIE VERY SAD.",
+    image: illusionist,
     tags: ["movies"]
   },
   {
