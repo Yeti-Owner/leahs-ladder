@@ -1,54 +1,73 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Leah's Ladder
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Leah's Ladder is a short interactive game that helps decide what to watch or play next. It uses a Tinder-style swiping followed by head-to-head matchups to rank preferences and make decision-making simple.
 
-## Expanding the ESLint configuration
+![Leah's Ladder Demo](./src/assets/screenshot.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🌟 Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Tinder-Style Swiping**: Approve or reject each option with easy swipes
+- **Smart Matchups**: Compare remaining options in head-to-head battles
+- **Personalized Rankings**: Get a sorted list of your preferences at the end
+- **Easy Customization**: Add/remove options with just a few lines of code
+- **Responsive Design**: Works perfectly on desktop and mobile devices
+
+## 🚀 Getting Started
+
+### Access the Game
+
+Play the live version at: [https://yeti-owner.github.io/leahs-ladder/](https://yeti-owner.github.io/leahs-ladder/)
+
+### How to Play
+
+1. Select which categories to include
+2. Swipe right to keep or left to reject each option
+3. Compare remaining options in 1v1 matchups
+4. View your personalized ranking of all options
+
+## 💻 Technologies Used
+
+- React
+- Vite
+- GitHub Pages (Hosting)
+
+## ➕ Adding New Options
+
+1. Edit `/src/optionsData.js`:
+```javascript
+{
+    title: "Option name",
+    description: "Option description.",
+    image: option_image_reference,
+    tags: ["what catagory it is"]
+  }
 ```
+2. Add corresponding image to `/src/assets/`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🤝 Contributing
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Want to contribute? Follow these steps:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 🙏 Acknowledgements
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [GitHub Pages](https://pages.github.com/)
+
+## 📬 Contact
+
+GitHub: [Yeti-Owner](https://github.com/Yeti-Owner)
+
+Project Link: [https://github.com/Yeti-Owner/leahs-ladder](https://github.com/Yeti-Owner/leahs-ladder)
+
+**Created with ❤️ for Leah**
 ```
