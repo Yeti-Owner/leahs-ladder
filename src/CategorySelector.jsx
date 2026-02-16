@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { getUniqueTags } from './optionsData';
+import { useOptionsData } from './optionsData';
 import './css/CategorySelector.css';
 
 export default function CategorySelector({ onComplete }) {
-  const uniqueTags = getUniqueTags();
-  
-  // Initialize all categories as false (not selected)
+  const { uniqueTags, loading, error } = useOptionsData();
+
   const [selectedCategories, setSelectedCategories] = useState(
     Object.fromEntries(uniqueTags.map(tag => [tag, false]))
   );
@@ -22,6 +21,9 @@ export default function CategorySelector({ onComplete }) {
     onComplete(activeCategories);
   };
 
+  if (loading) return <div className="category-stage"><h2>Loading options...</h2></div>;
+  if (error) return <div className="category-stage"><h2>Error: {error}</h2></div>;
+
   return (
     <div className="category-stage">
       <h2>What are you in the mood for?</h2>
@@ -36,7 +38,7 @@ export default function CategorySelector({ onComplete }) {
           </button>
         ))}
       </div>
-      <button 
+      <button
         onClick={handleProceed}
         className="proceed-button"
         disabled={!Object.values(selectedCategories).some(v => v)}

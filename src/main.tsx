@@ -1,25 +1,25 @@
-import { SetStateAction, StrictMode, useState } from 'react';
+import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from './HomePage';
 import CategorySelector from './CategorySelector';
 import OptionFilter from './OptionFilter';
 import TournamentBracket from './TournamentBracket';
-import { filterByCategories } from './optionsData';
+import { OptionsProvider, useOptionsData } from './optionsData';
+import { Option } from './utils';
 import './css/App.css';
 
 function App() {
-  const [, setSelectedCategories] = useState<string[] | null>(null);
-  const [filteredOptions, setFilteredOptions] = useState<any[] | null>(null);
+  const [filteredOptions, setFilteredOptions] = useState<Option[] | null>(null);
   const navigate = useNavigate();
+  const { filterByCategories } = useOptionsData();
 
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/categories" element={
-        <CategorySelector onComplete={(categories: SetStateAction<string[] | null>) => {
+        <CategorySelector onComplete={(categories: string[]) => {
           const filtered = filterByCategories(categories);
-          setSelectedCategories(categories);
           setFilteredOptions(filtered);
           navigate('/options');
         }} />
@@ -29,7 +29,7 @@ function App() {
           {filteredOptions && filteredOptions.length > 0 ? (
             <OptionFilter
               options={filteredOptions}
-              onComplete={(selected: SetStateAction<any[] | null>) => {
+              onComplete={(selected: Option[]) => {
                 setFilteredOptions(selected);
                 navigate('/tournament');
               }}
@@ -38,7 +38,7 @@ function App() {
             <div className="error-screen">
               <h2>No options available for selected categories!</h2>
               <button onClick={() => navigate('/categories')}>
-                ← Go back to category selection
+                Go back to category selection
               </button>
             </div>
           )}
@@ -52,7 +52,7 @@ function App() {
             <div className="error-screen">
               <h2>No options selected for tournament!</h2>
               <button onClick={() => navigate('/categories')}>
-                ← Go back to selection
+                Go back to selection
               </button>
             </div>
           )}
@@ -65,7 +65,9 @@ function App() {
 function Root() {
   return (
     <Router>
-      <App />
+      <OptionsProvider>
+        <App />
+      </OptionsProvider>
     </Router>
   );
 }

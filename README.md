@@ -1,73 +1,42 @@
 
 # Leah's Ladder
 
-## Overview
+An easy game to make decisions simple. First select which categories you want to play with, then play a simple swiping game to eliminate any hard passes, then choose between two options to narrow down your final rankings.
 
-Leah's Ladder is a short interactive game that helps decide what to watch or play next. It uses a Tinder-style swiping followed by head-to-head matchups to rank preferences and make decision-making simple.
+The website has placeholder data, but it's really easy to add in your own! Just follow the directions on the website or below to make a CSV file and click upload.
 
 ![Leah's Ladder Demo](./src/assets/screenshot.png)
 
-## 🌟 Features
+## How to play
+Just load the website at: [https://yeti-owner.github.io/leahs-ladder/](https://yeti-owner.github.io/leahs-ladder/) and follow the directions! If you'd like to run it locally, just download, then run:
 
-- **Tinder-Style Swiping**: Approve or reject each option with easy swipes
-- **Smart Matchups**: Compare remaining options in head-to-head battles
-- **Personalized Rankings**: Get a sorted list of your preferences at the end
-- **Easy Customization**: Add/remove options with just a few lines of code
-- **Responsive Design**: Works perfectly on desktop and mobile devices
-
-## 🚀 Getting Started
-
-### Access the Game
-
-Play the live version at: [https://yeti-owner.github.io/leahs-ladder/](https://yeti-owner.github.io/leahs-ladder/)
-
-### How to Play
-
-1. Select which categories to include
-2. Swipe right to keep or left to reject each option
-3. Compare remaining options in 1v1 matchups
-4. View your personalized ranking of all options
-
-## 💻 Technologies Used
-
-- React
-- Vite
-- GitHub Pages (Hosting)
-
-## ➕ Adding New Options
-
-1. Edit `/src/optionsData.js`:
-```javascript
-{
-    title: "Option name",
-    description: "Option description.",
-    image: option_image_reference,
-    tags: ["what catagory it is"]
-  }
+```bash
+npm install
+npm run dev
 ```
-2. Add corresponding image to `/src/assets/`
 
-## 🤝 Contributing
+### Custom Options
 
-Want to contribute? Follow these steps:
+You can replace the placeholder entries with your own options by uploading a CSV file to the home page.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 🙏 Acknowledgements
-
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- [GitHub Pages](https://pages.github.com/)
-
-## 📬 Contact
-
-GitHub: [Yeti-Owner](https://github.com/Yeti-Owner)
-
-Project Link: [https://github.com/Yeti-Owner/leahs-ladder](https://github.com/Yeti-Owner/leahs-ladder)
-
-**Created with ❤️ for Leah**
+Create a `.csv` file in this format:
+```csv
+title,description,image,tags
+Minecraft,Build a new house,https://minecraft.com/minecraft.png,games
+Breaking Bad,Watch the next episode,https://movie.com/breakingbad.jpg,shows
+Inception,Watch this,https://inception.com/inception.jpg,movies
+My Neighbor Totoro,Re-watch my favorite Ghibli,https://ghibli.com/totoro.jpg,movies|anime
 ```
+
+Here's what each column means:
+
+| Column | Description |
+|-|-|
+| `title` | Name of the option, ie "Minecraft" |
+| `description` | Short description shown on the card, ie "Play Hypixel" |
+| `image` | Link to an image (any link online) ie "https://example.com/image.png"|
+| `tags` | What categories it is, can be multiple if you separate it with `|` ie "games\|coop"|
+
+---
+
+**Created with love for Leah**

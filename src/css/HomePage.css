@@ -6,7 +6,7 @@
   min-height: 100vh;
   padding: 2vh 2vw;
   text-align: center;
-  background: #FFCFDF;
+  background: var(--color-pink);
 }
 
 .fade-in {
@@ -23,11 +23,11 @@
 
 .title {
   font-size: clamp(2.5rem, 6vw, 4rem);
-  color: #333;
+  color: var(--color-text);
   margin: 0 0 2vh;
   font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
   letter-spacing: 0.2vw;
-  background-color: #FEFDCA;
+  background-color: var(--color-yellow);
   padding: 1.5vh 3vw;
   border-radius: 1vh;
   box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.1);
@@ -40,22 +40,22 @@
   margin: 2vh 0;
   box-shadow: 0 0.4vh 1.5vh rgba(0, 0, 0, 0.2);
   object-fit: cover;
-  border: 0.4vh solid #FEFDCA;
+  border: 0.4vh solid var(--color-yellow);
 }
 
 .subtext {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: #333;
+  color: var(--color-text);
   margin: 2vh 0;
   max-width: 80vw;
   line-height: 1.4;
-  background-color: #FEFDCA;
+  background-color: var(--color-yellow);
   padding: 1.5vh 2vw;
   border-radius: 1vh;
 }
 
 .start-button {
-  background: #A5DEE5;
+  background: var(--color-blue);
   color: white;
   border: none;
   padding: 2vh 4vw;
@@ -68,8 +68,8 @@
 }
 
 .start-button:hover {
-  background: #E0F9B5;
-  color: #333;
+  background: var(--color-green);
+  color: var(--color-text);
   transform: translateY(-0.2vh);
   box-shadow: 0 0.6vh 0.8vh rgba(224, 249, 181, 0.3);
 }

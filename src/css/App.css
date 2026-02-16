@@ -1,8 +1,18 @@
+:root {
+  --color-pink: #FFCFDF;
+  --color-yellow: #FEFDCA;
+  --color-blue: #A5DEE5;
+  --color-green: #E0F9B5;
+  --color-text: #333;
+  --color-text-light: #666;
+  --color-white: #FFFFFF;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #FFCFDF;
-  color: #333;
+  background-color: var(--color-pink);
+  color: var(--color-text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,11 +22,11 @@ body {
 }
 
 .app-container {
-  width: 90vw; 
+  width: 90vw;
   max-width: 1200px;
-  margin: 1vh auto; 
-  padding: 2vh 2vw; 
-  background-color: #FEFDCA;
+  margin: 1vh auto;
+  padding: 2vh 2vw;
+  background-color: var(--color-yellow);
   border-radius: 1vh;
   box-shadow: 0 0.4vh 0.6vh rgba(0, 0, 0, 0.1);
   flex: 1;
@@ -32,19 +42,19 @@ body {
   width: 80vw;
   max-width: 600px;
   margin: 1vh auto;
-  background-color: #FEFDCA;
+  background-color: var(--color-yellow);
   border-radius: 1vh;
 }
 
 .err-msg h2 {
-  color: #A5DEE5;
+  color: var(--color-blue);
   margin-bottom: 1vh;
   font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
 .err-btn {
-  background: #E0F9B5;
-  color: #333;
+  background: var(--color-green);
+  color: var(--color-text);
   border: none;
   padding: 1vh 2vw;
   border-radius: 0.5vh;
@@ -52,6 +62,11 @@ body {
   font-size: clamp(14px, 2vw, 16px);
   transition: all 0.2s ease;
   margin: 0.5vh 0;
+}
+
+.err-btn:hover {
+  background: var(--color-blue);
+  color: white;
 }
 
 .battle-options {
@@ -65,11 +80,11 @@ body {
 }
 
 .battle-option {
-  border: 0.2vh solid #E0F9B5;
+  border: 0.2vh solid var(--color-green);
   border-radius: 1vh;
   padding: 1vh;
   width: 45%;
-  background: #FEFDCA;
+  background: var(--color-yellow);
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -85,14 +100,20 @@ body {
   margin-bottom: 1vh;
 }
 
+.battle-option:hover {
+  transform: translateY(-0.5vh);
+  box-shadow: 0 0.4vh 1.5vh rgba(0, 0, 0, 0.1);
+  border-color: var(--color-blue);
+}
+
 .opt-card {
-  width: 80vw; 
+  width: 80vw;
   max-width: 500px;
   margin: 1vh auto;
-  border: 0.2vh solid #E0F9B5;
+  border: 0.2vh solid var(--color-green);
   border-radius: 1vh;
   padding: 2vh;
-  background: #FEFDCA;
+  background: var(--color-yellow);
   transition: all 0.2s ease;
 }
 
@@ -112,7 +133,8 @@ body {
   flex-wrap: wrap;
 }
 
-.btn-yes, .btn-no {
+.btn-yes,
+.btn-no {
   padding: 1vh 2vw;
   border: none;
   border-radius: 0.5vh;
@@ -121,26 +143,16 @@ body {
   font-size: clamp(14px, 2vw, 16px);
   width: 45%;
 }
-.battle-option:hover {
-  transform: translateY(-0.5vh);
-  box-shadow: 0 0.4vh 1.5vh rgba(0, 0, 0, 0.1);
-  border-color: #A5DEE5;
-}
-
-.err-btn:hover {
-  background: #A5DEE5;
-  color: white;
-}
 
 .btn-yes:hover {
-  background-color: #A5DEE5;
+  background-color: var(--color-blue);
   color: white;
   transform: scale(1.05);
 }
 
 .btn-no:hover {
-  background-color: #E0F9B5;
-  color: #333;
+  background-color: var(--color-green);
+  color: var(--color-text);
   transform: scale(1.05);
 }
 
@@ -149,7 +161,8 @@ body {
     width: 90%;
   }
 
-  .btn-yes, .btn-no {
+  .btn-yes,
+  .btn-no {
     width: 90%;
   }
 

@@ -6,40 +6,15 @@ body .app-container {
   margin: 0;
 }
 
-.filter-stage {
-  padding: 2vh 2vw; 
-  text-align: center;
-}
-
-.loading-state {
-  text-align: center;
-  padding: 4vh 2vw;
-  color: #666;
-}
-
-.error-screen {
-  text-align: center;
-  padding: 4vh 2vw; 
-  max-width: 80vw; 
-  margin: 0 auto;
-  background-color: #FEFDCA;
-  border-radius: 1vh;
-}
-
-.error-screen h2 {
-  color: #A5DEE5;
-  margin-bottom: 2vh;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-}
-
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #FFCFDF;
+  background-color: var(--color-pink);
 }
 
 .filter-stage {
+  padding: 2vh 2vw;
+  text-align: center;
   max-width: 80vw;
   margin: 0 auto;
   height: 90vh;
@@ -51,51 +26,69 @@ body {
   z-index: 1;
 }
 
+.loading-state {
+  text-align: center;
+  padding: 4vh 2vw;
+  color: var(--color-text-light);
+}
+
+.error-screen {
+  text-align: center;
+  padding: 4vh 2vw;
+  max-width: 80vw;
+  margin: 0 auto;
+  background-color: var(--color-yellow);
+  border-radius: 1vh;
+}
+
+.error-screen h2 {
+  color: var(--color-blue);
+  margin-bottom: 2vh;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
 .background-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FFCFDF;
+  background-color: var(--color-pink);
   z-index: -1;
 }
 
 .swipe-instruction {
-  color: #333;
-  font-size: clamp(1rem, 2vw, 1.1rem); 
+  color: var(--color-text);
+  font-size: clamp(1rem, 2vw, 1.1rem);
   margin-bottom: 1vh;
   text-align: center;
   position: relative;
   z-index: 1;
-  background-color: #FEFDCA;
+  background-color: var(--color-yellow);
   padding: 0.5vh 1vw;
   border-radius: 2vh;
 }
 
 .swipe-container {
   width: 100%;
-  max-width: 80vw; 
+  max-width: 80vw;
   height: 70vh;
   position: relative;
   touch-action: none;
   user-select: none;
   transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  background: #FFFFFF;
-  border: 0.4vh solid #A5DEE5;
+  background: var(--color-white);
+  border: 0.4vh solid var(--color-blue);
   border-radius: 1.5vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   z-index: 1;
+  pointer-events: all;
 }
 
 .swipe-container * {
   pointer-events: none;
-}
-
-.swipe-container {
-  pointer-events: all;
 }
 
 .swipe-container.fade-out {
@@ -110,7 +103,7 @@ body {
   flex-direction: column;
   border-radius: 1vh;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
 }
 
 .option-card img {
@@ -136,11 +129,11 @@ body {
   margin: 0 0 0.5vh;
   font-size: clamp(1.5rem, 3vw, 1.8rem);
   font-weight: bold;
-  color: #333;
+  color: var(--color-text);
 }
 
 .option-info p {
-  color: #666;
+  color: var(--color-text-light);
   line-height: 1.4;
   margin: 0;
   font-size: clamp(0.9rem, 2vw, 1rem);
@@ -193,10 +186,10 @@ body {
   text-align: center;
   padding: 0.75vh 1.5vw;
   font-size: clamp(0.9rem, 2vw, 1rem);
-  color: #333;
-  background: #FEFDCA;
+  color: var(--color-text);
+  background: var(--color-yellow);
   border-radius: 5vh;
-  border: 0.2vh solid #A5DEE5;
+  border: 0.2vh solid var(--color-blue);
   position: relative;
   z-index: 1;
   margin-top: 0.5vh;
